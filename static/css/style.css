@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container_app {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    min-height: 100px;
+}
+
+.logo {
+    max-height: 150px;
+}
+
+.search-form {
+    flex-grow: 1;
+}
+
+.img-search {
+    border: none;
+    width: 15px;
+}
+
+.logo-link {
+    flex-grow: 2;
+}
+
+.btn-cart {
+    display: block;;
+    padding: 16px;
+    height: max-content;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+.btn-cart:hover{
+    background-color: transparent;
+}
+
+.cart{
+    position: relative;
+}
+
+.cart-block{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.62);
+    border-radius: 8px;
+    box-sizing: border-box;
+    right: 0;
+    top: 130%;
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.cart-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(192, 192, 182, 0.3);
+}
+
+.product-cart__img {
+    max-width: 50px;
+}
+
+.product-cart__desc {
+    display: flex;
+    flex-grow: 2;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    row-gap: 2px;
+}
+
+.product-title {
+    margin-bottom: 5px;
+}
+
+.product-quantity {
+    font-size: smaller;
+}
+
+.product-single-price {
+    font-size: x-small;
+}
+
+.aside-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    flex-grow: 1.5;
+    row-gap: 5px;
+}
+
+.product-price {
+    align-self: center;
+}
+
+.del-btn {
+    display: block;;
+    padding: 3px 9px;
+    height: max-content;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.9);
+    box-sizing: border-box;
+    align-self: flex-end;
+}
+
+.invisible{
+    display: none;
+}
+
+.buy-btn {
+    width: max-content;
+    padding: 10px;
+    align-self: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+.buy-btn:hover{
+    background-color: transparent;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 0 26px rgba(0,0,0,0.1);
+    padding: 50px 20px;
+}
+
+.product__image {
+    max-width: 150px;
+}
