@@ -6,6 +6,7 @@
     <title>Интернет-магазин</title>
     <link rel="stylesheet" href="static/css/style.css">
     <script defer src="static/js/vue.js"></script>
+    <script defer src="static/js/productsComp.js"></script>
     <script defer src="static/js/main.js"></script>
 </head>
 
@@ -41,14 +42,7 @@
             </div>
         </header>
         <main>
-            <div class="products">
-                <div class="product-item" v-for="item in filteredProducts">
-                    <h3>{{ item.product_name }}</h3>
-                    <p>Цена: {{ item.price }}&nbspруб </p>
-                    <img class="product__image" :src=imgProduct alt="product_image">
-                    <button class="buy-btn" @click="addProduct(item)">Купить</button>
-                </div>
-            </div>
+            <product-list :products="filteredProducts" :img-default="imgProduct"></product-list>
         </main>
     </div>
 </body>

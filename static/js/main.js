@@ -1,8 +1,9 @@
-'use strict';
+// import Vue from 'vue'
+// import App from './App.vue'
 
 const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-const app = new Vue({
+new Vue({
   el: '#app',
   data: {
     products: [],
@@ -60,6 +61,8 @@ const app = new Vue({
       .then(data => {
         this.basketItems = data.contents;
       });
-  }
+  },
+
+  // render: h => h(App)
 
 });
