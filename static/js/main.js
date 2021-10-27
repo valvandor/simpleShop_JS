@@ -9,7 +9,6 @@ new Vue({
     products: [],
     filteredProducts: [],
     basketItems: [],
-    searchLine: '',
     catalogUrl: '/catalogData.json',
     basketUrl: '/getBasket.json',
     imgProduct: 'static/image/logo.jpeg',
@@ -26,8 +25,8 @@ new Vue({
       }
     },
 
-    filterProducts (){
-      let regexp = new RegExp(this.searchLine, 'i');
+    filterProducts (searchLine){
+      let regexp = new RegExp(searchLine, 'i');
       this.filteredProducts =  this.products.filter(el => regexp.test(el.product_name));
     },
 

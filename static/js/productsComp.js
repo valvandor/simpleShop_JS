@@ -1,6 +1,6 @@
 'use strict';
 
-Vue.component('product-list', {
+Vue.component('products', {
   props: ['products', 'imgDefault'],
   template: `
             <div class="products">
@@ -20,7 +20,7 @@ Vue.component('product', {
               <h3>{{ item.product_name }}</h3>
               <p>Цена: {{ item.price }}&nbspруб </p>
               <img class="product__image" :src="img" alt="product_image">
-              <button class="buy-btn" @click="addProduct(item)">Купить</button>
+              <button class="buy-btn" @click="$parent.$emit('add-product', item)">Купить</button>
             </div>
             `
 });
