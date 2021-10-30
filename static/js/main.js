@@ -1,18 +1,16 @@
 // import Vue from 'vue'
 // import App from './App.vue'
 
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-
 new Vue({
   el: '#app',
   data: {
     products: [],
     filteredProducts: [],
     basketItems: [],
-    catalogUrl: '/catalogData.json',
+    catalogUrl: '/api/products',
     basketUrl: '/getBasket.json',
-    imgProduct: 'static/image/logo.jpeg',
-    imgBasketProduct: 'static/image/logo.jpeg',
+    imgProduct: 'image/logo.jpeg',
+    imgBasketProduct: 'image/logo.jpeg',
     isVisibleCart: false
   },
   methods: {
@@ -21,7 +19,7 @@ new Vue({
         let response = await fetch(url);
         return await response.json(); // parses JSON response into native JavaScript objects
       } catch (err) {
-        console.log(err);
+          console.log(err);
       }
     },
 
@@ -50,16 +48,19 @@ new Vue({
   },
 
   mounted() {
-    this.getJson(API_URL.concat(this.catalogUrl))
+    this.getJson(this.catalogUrl)
       .then(data => {
         this.products = data;
         this.filteredProducts = this.products;
+      })
+      .catch(err => {
+        console.log(err);
       });
 
-    this.getJson(API_URL.concat(this.basketUrl))
-      .then(data => {
-        this.basketItems = data.contents;
-      });
+    // this.getJson(API_URL.concat(this.basketUrl))
+    //   .then(data => {
+    //     this.basketItems = data.contents;
+    //   });
   },
 
   // render: h => h(App)
