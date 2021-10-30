@@ -1,14 +1,14 @@
-'use strict';
+// import Vue from 'vue'
+// import App from './App.vue'
 
 const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-const app = new Vue({
+new Vue({
   el: '#app',
   data: {
     products: [],
     filteredProducts: [],
     basketItems: [],
-    searchLine: '',
     catalogUrl: '/catalogData.json',
     basketUrl: '/getBasket.json',
     imgProduct: 'static/image/logo.jpeg',
@@ -25,8 +25,8 @@ const app = new Vue({
       }
     },
 
-    filterProducts (){
-      let regexp = new RegExp(this.searchLine, 'i');
+    filterProducts (searchLine){
+      let regexp = new RegExp(searchLine, 'i');
       this.filteredProducts =  this.products.filter(el => regexp.test(el.product_name));
     },
 
@@ -60,6 +60,8 @@ const app = new Vue({
       .then(data => {
         this.basketItems = data.contents;
       });
-  }
+  },
+
+  // render: h => h(App)
 
 });
