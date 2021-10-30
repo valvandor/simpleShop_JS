@@ -1,5 +1,5 @@
-const express = require('express');
-const fs = require('fs');
+import express from 'express';
+import { readFile } from 'fs';
 
 const app = express();
 
@@ -8,7 +8,7 @@ app.use('/', express.static('static'));
 
 
 app.get('/api/products', (_req, res) => {
-  fs.readFile('server/db/products.json', 'utf-8', (err, data) => {
+  readFile('server/db/products.json', 'utf-8', (err, data) => {
       if(err){
           res.sendStatus(404, JSON.stringify({result:0, text: err}));
       } else {
