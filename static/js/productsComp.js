@@ -1,12 +1,37 @@
 'use strict';
 
 Vue.component('products', {
-  props: ['products', 'imgDefault'],
+  data(){
+    return {
+        catalogUrl: '/api/products',
+        filteredProducts: [],
+        products: [],
+        imgDefault: 'image/logo.jpeg'
+    }
+  },
+
+  mounted(){
+    this.$parent.getJson(this.catalogUrl)
+      .then(data => {
+        this.products = data;
+        this.filteredProducts = this.products;
+      });
+  },
+
+  methods: {
+    filterProducts(searchLine){
+      if(searchLine != '\\'){
+        let regexp = new RegExp(searchLine, 'i');
+        this.filteredProducts = this.products.filter(el => regexp.test(el.product_name));
+      }
+    }
+  },
+
   template: `
             <div class="products">
-                  <product v-for="item in products" 
-                          :key="item.id_product"
-                          :item="item"
+                  <product v-for="product in filteredProducts" 
+                          :key="product.id_product"
+                          :item="product"
                           :img="imgDefault">
                   </product>
             </div>
@@ -15,12 +40,13 @@ Vue.component('products', {
 
 Vue.component('product', {
   props: ['item', 'img'],
+  
   template: `
             <div class="product-item">
               <h3>{{ item.product_name }}</h3>
               <p>Цена: {{ item.price }}&nbspруб </p>
               <img class="product__image" :src="img" alt="product_image">
-              <button class="buy-btn" @click="$parent.$emit('add-product', item)">Купить</button>
+              <button class="buy-btn" @click="$root.$refs.basket.addProduct(item)">Купить</button>
             </div>
             `
 });

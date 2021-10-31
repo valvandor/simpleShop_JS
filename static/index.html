@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/vue.js"></script>
+    <script defer src="js/productsComp.js"></script>
+    <script defer src="js/cartComp.js"></script>
+    <script defer src="js/searchComp.js"></script>
+    <script defer src="js/ErrorComp.js"></script>
+    <script defer src="js/main.js"></script>
+</head>
+
+<body>
+    <div id='app' class="container_app">
+        <header class="header">
+            <a class="logo-link" href="index.html">
+                <img class="logo" src="image/logo.jpeg" alt="logo">
+            </a>
+            <search></search>
+            <basket ref="basket"></basket>
+        </header>
+        <main>
+            <error ref="error"></error>
+            <products ref="products"></products>
+        </main>
+    </div>
+</body>
+
+</html>
