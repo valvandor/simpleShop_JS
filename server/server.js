@@ -2,9 +2,12 @@ import express from 'express';
 import { readFile } from 'fs';
 
 const app = express();
+import cart from './cartRouter.js';//обработчик всех запросов корзины
 
 app.use(express.json());
 app.use('/', express.static('static'));
+app.use('/api/cart', cart);
+
 
 
 app.get('/api/products', (_req, res) => {

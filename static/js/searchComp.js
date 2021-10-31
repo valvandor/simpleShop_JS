@@ -7,10 +7,10 @@ Vue.component('search', {
     }
   },
   template: `
-              <form action="#" class="search-form"  @submit.prevent='$parent.filterProducts(userSearch)'>
+              <form action="#" class="search-form"  @submit.prevent='$parent.$refs.products.filterProducts(userSearch)'>
                 <input type="text" class="search-field" v-model="userSearch">
                 <button type="submit" class="btn-search">
-                    <img src="static/image/search.svg" class="img-search"></img>
+                    <img src="image/search.svg" class="img-search"></img>
                 </button>
               </form>
             `

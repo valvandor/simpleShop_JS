@@ -9,6 +9,7 @@
     <script defer src="js/productsComp.js"></script>
     <script defer src="js/cartComp.js"></script>
     <script defer src="js/searchComp.js"></script>
+    <script defer src="js/ErrorComp.js"></script>
     <script defer src="js/main.js"></script>
 </head>
 
@@ -19,20 +20,19 @@
                 <img class="logo" src="image/logo.jpeg" alt="logo">
             </a>
             <search></search>
-            <div class="cart">
+            <basket ref="basket"></basket>
+            <!-- <div class="cart">
                 <button class="btn-cart" type="button" @click="isVisibleCart = !isVisibleCart">Корзина</button>
                 <basket :basket-items='basketItems'
                         :img-product='imgBasketProduct'
                         :visibility='isVisibleCart'
                         @remove-product='removeProduct'>
                 </basket>
-            </div>
+            </div> -->
         </header>
         <main>
-            <products :products="filteredProducts" 
-                      :img-default="imgProduct" 
-                      @add-product="addProduct">
-            </products>
+            <error ref="error"></error>
+            <products ref="products"></products>
         </main>
     </div>
 </body>

@@ -1,68 +1,62 @@
-// import Vue from 'vue'
-// import App from './App.vue'
 
 new Vue({
   el: '#app',
-  data: {
-    products: [],
-    filteredProducts: [],
-    basketItems: [],
-    catalogUrl: '/api/products',
-    basketUrl: '/getBasket.json',
-    imgProduct: 'image/logo.jpeg',
-    imgBasketProduct: 'image/logo.jpeg',
-    isVisibleCart: false
-  },
   methods: {
     async getJson(url) {
       try {
         let response = await fetch(url);
         return await response.json(); // parses JSON response into native JavaScript objects
       } catch (err) {
-          console.log(err);
+          this.$refs.error.text = err;
       }
     },
 
-    filterProducts (searchLine){
-      let regexp = new RegExp(searchLine, 'i');
-      this.filteredProducts =  this.products.filter(el => regexp.test(el.product_name));
-    },
-
-    addProduct(item){
-      let exist = this.basketItems.find(el => el.id_product === item.id_product);
-      if (exist){
-        exist.quantity ++;
-      } else {
-        this.basketItems.push(Object.assign({quantity: 1}, item));
+    async postJson(url, data){
+      try {
+        const result = await fetch(url, {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        return await result.json();
+      } catch (error) {
+        this.$refs.error.text = error;
       }
     },
 
-    removeProduct(item){
-      if (item.quantity > 1){
-        item.quantity--;
-      } else {
-        this.basketItems.splice(this.basketItems.indexOf(item), 1)
+    async putJson(url, data){
+        try {
+        const result = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+        return await result.json();
+      } catch (error) {
+        this.$refs.error.text = error;
       }
-    }
+    },
+
+
+    // addProduct(item){
+    //   let exist = this.basketItems.find(el => el.id_product === item.id_product);
+    //   if (exist){
+    //     exist.quantity ++;
+    //   } else {
+    //     this.basketItems.push(Object.assign({quantity: 1}, item));
+    //   }
+    // },
+
+    // removeProduct(item){
+    //   if (item.quantity > 1){
+    //     item.quantity--;
+    //   } else {
+    //     this.basketItems.splice(this.basketItems.indexOf(item), 1)
+    //   }
+    // }
 
   },
-
-  mounted() {
-    this.getJson(this.catalogUrl)
-      .then(data => {
-        this.products = data;
-        this.filteredProducts = this.products;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    // this.getJson(API_URL.concat(this.basketUrl))
-    //   .then(data => {
-    //     this.basketItems = data.contents;
-    //   });
-  },
-
-  // render: h => h(App)
 
 });

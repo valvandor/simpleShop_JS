@@ -1,1 +1,5 @@
+# ignore dev-modules
 node_modules/**/*
+
+# for debug launch on VSC
+.vscode/
