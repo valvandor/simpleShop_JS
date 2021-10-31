@@ -1,9 +1,10 @@
-import { add as _add, change as _change } from './cart.js';
+import { add as _add, change as _change, remove as _remove } from './cart.js';
 import { readFile, writeFile } from 'fs';
 
 const actions = {
     add: _add,
-    change: _change
+    change: _change,
+    remove: _remove
 };
 //HANDLER отвечает за изменение данных в самом файле
 let handler = (req, res, action, file) => {

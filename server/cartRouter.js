@@ -15,11 +15,16 @@ router.get('/', (_req, res) => {
         }
     })
 });
+
 router.post('/', (req, res) => {
     handler(req, res, 'add', pathToCart);
 });
+
 router.put('/:id', (req, res) => {
     handler(req, res, 'change', pathToCart);
 });
 
+router.delete(`/:id`, (req, res) => {
+    handler(req, res, 'remove', pathToCart);
+});
 export default router;

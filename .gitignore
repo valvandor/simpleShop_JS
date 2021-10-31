@@ -3,3 +3,6 @@ node_modules/**/*
 
 # for debug launch on VSC
 .vscode/
+
+# 'db'
+server/db/cart.json

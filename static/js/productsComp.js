@@ -20,8 +20,10 @@ Vue.component('products', {
 
   methods: {
     filterProducts(searchLine){
-      let regexp = new RegExp(searchLine, 'i');
-      this.filteredProducts = this.products.filter(el => regexp.test(el.product_name));
+      if(searchLine != '\\'){
+        let regexp = new RegExp(searchLine, 'i');
+        this.filteredProducts = this.products.filter(el => regexp.test(el.product_name));
+      }
     }
   },
 

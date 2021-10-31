@@ -22,7 +22,7 @@ Vue.component('basket', {
       if(find){
         this.$parent.putJson(this.cartUrl + '/'+ find.id_product, {quantity: 1})
           .then(data => {
-            if(data.result === 1){
+            if(data.result){
               find.quantity++
             }
           })
@@ -30,8 +30,26 @@ Vue.component('basket', {
         const prod = Object.assign({quantity: 1}, item);
         this.$parent.postJson(this.cartUrl, prod)
           .then(data => {
-            if(data.result === 1){
+            if(data.result){
               this.basketItems.push(prod)
+            }
+          });
+      }
+    },
+    removeProduct(item){
+      let find = this.basketItems.find(el => el.id_product === item.id_product);
+      if (item.quantity > 1){
+        this.$parent.putJson(this.cartUrl + '/'+ find.id_product, {quantity: -1})
+          .then(data => {
+            if(data.result ){
+              item.quantity--;
+            }
+          });
+      } else { // (item.quantity == 1)
+        this.$parent.delJson(this.cartUrl + '/'+ find.id_product, {id_product: item.id_product})
+          .then( data => {
+            if ( data.result ) {
+              this.basketItems.splice(this.basketItems.indexOf(item), 1);
             }
           });
       }
@@ -66,7 +84,7 @@ Vue.component('basket-item', {
                 </div>
                 <div class="aside-cart">
                     <p class="product-price">{{ item.quantity * item.price }}</p>
-                    <button class="del-btn" @click="$parent.$emit('remove-product', item)">&times;</button>
+                    <button class="del-btn" @click="$parent.removeProduct(item)">&times;</button>
                 </div>
               </div>
             `
