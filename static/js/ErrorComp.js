@@ -1,7 +1,7 @@
 Vue.component('error', {
     data(){
         return {
-          text: ''
+          text: '',
         }
     },
     computed: {
@@ -9,12 +9,16 @@ Vue.component('error', {
           return this.text === ''
       }
     },
+    methods: {
+      insertErrorMsg(){
+        document.querySelector('.error-msg').textContent = this.text;
+      }
+    },
     template: `
               <div class="error-block" v-if="!isVisible">
-                  <p class="error-msg">
-                  <button class="close-btn" @click="text=''">&times;</button>
-                   {{ text }}
-                  </p>
+                <button class="afas" @click="insertErrorMsg">>></button>
+                <span class="error-msg">Возникла ошибка...</span>
+                <button class="close-btn" @click="text=''">&times;</button>
               </div>
               `
 })
