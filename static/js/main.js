@@ -38,18 +38,17 @@ new Vue({
         this.$refs.error.text = error;
       }
     },
-    async delJson(url, data){
+    async delJson(url){
       try {
         const result = await fetch(url, {
           method: 'DELETE',
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(data)
         });
         return await result.json();
       } catch (error) {
-          return this.$refs.error.setText(error);
+        this.$refs.error.text = error;
       }
   },
 

@@ -46,7 +46,7 @@ Vue.component('basket', {
             }
           });
       } else { // (item.quantity == 1)
-        this.$parent.delJson(this.cartUrl + '/'+ find.id_product, {id_product: item.id_product})
+        this.$parent.delJson(this.cartUrl + '/'+ find.id_product)
           .then( data => {
             if ( data.result ) {
               this.basketItems.splice(this.basketItems.indexOf(item), 1);
@@ -74,6 +74,11 @@ Vue.component('basket', {
 
 Vue.component('basket-item', {
   props: ['imgProduct', 'item', ],
+  methods: {
+    removeProductClicked(){
+      this.$root.$refs.basket.removeProduct(this.item);
+    }
+  },
   template: ` 
               <div class="cart-items">
                 <img class="product-cart__img" :src="imgProduct" alt="Some image">
@@ -84,7 +89,7 @@ Vue.component('basket-item', {
                 </div>
                 <div class="aside-cart">
                     <p class="product-price">{{ item.quantity * item.price }}</p>
-                    <button class="del-btn" @click="$parent.removeProduct(item)">&times;</button>
+                    <button class="del-btn" @click='removeProductClicked'>&times;</button>
                 </div>
               </div>
             `
