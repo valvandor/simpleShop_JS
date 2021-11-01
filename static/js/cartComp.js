@@ -13,7 +13,12 @@ Vue.component('basket', {
   mounted(){
       this.$parent.getJson(this.cartUrl)
         .then(data => {
-          this.basketItems = data.contents ? data.contents : [];
+          for (let item of data.contents){
+            // forming paths of images for products
+            item.imgPath = this.$root.pathToImgProd + item.id_product + '.jpeg';
+
+            this.basketItems.push(item);
+          }
         });
   },
   methods: {
@@ -62,7 +67,7 @@ Vue.component('basket', {
                   <p v-if='basketItems.length == 0'>Корзина&nbspпуста</p>
                   <basket-item
                       v-for="item of basketItems" 
-                      :img-product="imgProduct" 
+                      :img-product="item.imgPath" 
                       :key="item.id_product"
                       :item="item">
                   </basket-item>

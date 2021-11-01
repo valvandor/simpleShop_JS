@@ -1,6 +1,9 @@
 
 new Vue({
   el: '#app',
+  data: {
+    pathToImgProd: 'image/products/'
+  },
   methods: {
     async getJson(url) {
       try {
@@ -50,7 +53,7 @@ new Vue({
       } catch (error) {
         this.$refs.error.text = error;
       }
-  },
+    },
 
   },
 

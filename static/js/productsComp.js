@@ -6,15 +6,19 @@ Vue.component('products', {
         catalogUrl: '/api/products',
         filteredProducts: [],
         products: [],
-        imgDefault: 'image/logo.jpeg'
     }
   },
 
   mounted(){
     this.$parent.getJson(this.catalogUrl)
       .then(data => {
-        this.products = data;
-        this.filteredProducts = this.products;
+        for (let item of data){
+          // forming paths of images for products
+          item.imgPath = this.$root.pathToImgProd + item.id_product + '.jpeg';
+
+          this.products.push(item);
+          this.filteredProducts.push(item);
+        }
       });
   },
 
@@ -32,7 +36,7 @@ Vue.component('products', {
                   <product v-for="product in filteredProducts" 
                           :key="product.id_product"
                           :item="product"
-                          :img="imgDefault">
+                          :img="product.imgPath">
                   </product>
             </div>
             `
