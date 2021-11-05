@@ -4,6 +4,9 @@ new Vue({
   data: {
     pathToImgProd: 'image/products/'
   },
+
+  components: {products, basket, search, error},
+  
   methods: {
     async getJson(url) {
       try {

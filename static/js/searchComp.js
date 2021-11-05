@@ -1,6 +1,6 @@
 'use strict';
 
-Vue.component('search', {
+const search = {
   data () {
     return {
       userSearch: ''
@@ -14,4 +14,4 @@ Vue.component('search', {
                 </button>
               </form>
             `
-});
+};

@@ -1,6 +1,25 @@
 'use strict';
 
-Vue.component('products', {
+const product = {
+  props: {
+    img: String, 
+    item: {
+      type: Object,
+      required: true
+    } 
+  },
+  
+  template: `
+            <div class="product-item">
+              <h3>{{ item.product_name }}</h3>
+              <p>Цена: {{ item.price }}&nbspруб </p>
+              <img class="product__image" :src="img" alt="product_image">
+              <button class="buy-btn" @click="$root.$refs.basket.addProduct(item)">Купить</button>
+            </div>
+            `
+};
+
+const products = {
   data(){
     return {
         catalogUrl: '/api/products',
@@ -8,6 +27,8 @@ Vue.component('products', {
         products: [],
     }
   },
+
+  components: {product},
 
   mounted(){
     this.$parent.getJson(this.catalogUrl)
@@ -40,17 +61,5 @@ Vue.component('products', {
                   </product>
             </div>
             `
-});
+};
 
-Vue.component('product', {
-  props: ['item', 'img'],
-  
-  template: `
-            <div class="product-item">
-              <h3>{{ item.product_name }}</h3>
-              <p>Цена: {{ item.price }}&nbspруб </p>
-              <img class="product__image" :src="img" alt="product_image">
-              <button class="buy-btn" @click="$root.$refs.basket.addProduct(item)">Купить</button>
-            </div>
-            `
-});
