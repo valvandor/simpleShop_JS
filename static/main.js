@@ -1,3 +1,8 @@
+import Vue from 'vue'
+import ProductsCompVue from './components/Products/ProductsComp.vue'
+import BasketCompVue from './components/Basket/BasketComp.vue'
+import SearchCompVue from './components/SearchComp.vue'
+import ErrorCompVue from './components/ErrorComp.vue'
 
 new Vue({
   el: '#app',
@@ -5,7 +10,12 @@ new Vue({
     pathToImgProd: 'image/products/'
   },
 
-  components: {products, basket, search, error},
+  components: {
+    'products': ProductsCompVue, 
+    'basket': BasketCompVue, 
+    'search': SearchCompVue, 
+    'error': ErrorCompVue
+  },
   
   methods: {
     async getJson(url) {
