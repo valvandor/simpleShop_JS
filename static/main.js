@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import ProductsCompVue from './components/Products/ProductsComp.vue'
-import BasketCompVue from './components/Basket/BasketComp.vue'
-import SearchCompVue from './components/SearchComp.vue'
-import ErrorCompVue from './components/ErrorComp.vue'
+import Vue from 'vue';
+import ProductsCompVue from './components/Products/ProductsComp.vue';
+import BasketCompVue from './components/Basket/BasketComp.vue';
+import SearchCompVue from './components/SearchComp.vue';
+import ErrorCompVue from './components/ErrorComp.vue';
+import './css/style.css';
 
 new Vue({
   el: '#app',
