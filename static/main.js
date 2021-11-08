@@ -1,6 +1,23 @@
+import Vue from 'vue';
+import ProductsCompVue from './components/Products/ProductsComp.vue';
+import BasketCompVue from './components/Basket/BasketComp.vue';
+import SearchCompVue from './components/SearchComp.vue';
+import ErrorCompVue from './components/ErrorComp.vue';
+import './css/style.css';
 
 new Vue({
   el: '#app',
+  data: {
+    pathToImgProd: 'image/products/'
+  },
+
+  components: {
+    'products': ProductsCompVue, 
+    'basket': BasketCompVue, 
+    'search': SearchCompVue, 
+    'error': ErrorCompVue
+  },
+  
   methods: {
     async getJson(url) {
       try {
@@ -38,20 +55,19 @@ new Vue({
         this.$refs.error.text = error;
       }
     },
-    async delJson(url, data){
+    async delJson(url){
       try {
         const result = await fetch(url, {
           method: 'DELETE',
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(data)
         });
         return await result.json();
       } catch (error) {
-          return this.$refs.error.setText(error);
+        this.$refs.error.text = error;
       }
-  },
+    },
 
   },
 

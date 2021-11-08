@@ -4,21 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Интернет-магазин</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/vue.js"></script>
-    <script defer src="js/productsComp.js"></script>
-    <script defer src="js/cartComp.js"></script>
-    <script defer src="js/searchComp.js"></script>
-    <script defer src="js/ErrorComp.js"></script>
-    <script defer src="js/main.js"></script>
-</head>
+    <link rel="stylesheet" type="text/css" href="./main.css">
+    <script defer type="text/javascript" src="./bundle.js" charset="utf-8"></script>
+</head> 
 
 <body>
     <div id='app' class="container_app">
         <header class="header">
-            <a class="logo-link" href="index.html">
-                <img class="logo" src="image/logo.jpeg" alt="logo">
-            </a>
+            <div class="logo-div">
+                <a class="logo-link" href="index.html">
+                    <img class="logo" src="image/logo.jpeg" alt="logo">
+                </a>
+            </div>
             <search></search>
             <basket ref="basket"></basket>
         </header>

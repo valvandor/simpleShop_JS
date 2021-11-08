@@ -5,7 +5,7 @@ const app = express();
 import cart from './cartRouter.js';//обработчик всех запросов корзины
 
 app.use(express.json());
-app.use('/', express.static('static'));
+app.use('/', express.static('dist'));
 app.use('/api/cart', cart);
 
 
